@@ -4,139 +4,587 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Udhar Lo - Digital Khata and Ledger App</title>
-  <meta name="description" content="Udhar Lo is a digital khata (ledger) app for shopkeepers and small businesses to track customer credit, payments and reminders.">
+  <meta name="description" content="Udhar Lo is a digital khata (ledger) app for shopkeepers and small businesses. Track customer credit, record payments and send WhatsApp reminders.">
+  <meta name="theme-color" content="#06120D">
+  <meta property="og:title" content="Udhar Lo - Digital Khata and Ledger App">
+  <meta property="og:description" content="Track customer credit, record payments and send reminders. Your data stays on your phone.">
+  <meta property="og:image" content="https://udharlo.github.io/img/dashboard.jpg">
+  <meta property="og:url" content="https://udharlo.github.io/">
+  <link rel="icon" href="img/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Udhar Lo",
+    "operatingSystem": "Android",
+    "applicationCategory": "FinanceApplication",
+    "description": "Digital khata (ledger) app for shopkeepers and small businesses to track customer credit, payments and reminders.",
+    "url": "https://udharlo.github.io/",
+    "downloadUrl": "https://play.google.com/store/apps/details?id=co.udharlo",
+    "author": { "@type": "Person", "name": "Suresh Vaishnav" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #06120D;
+      --bg-2: #0A1B14;
+      --glass: rgba(255, 255, 255, 0.045);
+      --glass-strong: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.09);
+      --text: #ECFDF5;
+      --muted: #9DB8AC;
+      --green: #10B981;
+      --green-2: #34D399;
+      --teal: #2DD4BF;
+      --red: #F87171;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: var(--green-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 16px; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--green); color: #fff; padding: 8px 12px; border-radius: 8px; z-index: 100; }
+    .skip:focus { left: 8px; }
+
+    /* 3D background layer */
+    #bg3d { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .glow {
+      position: fixed; z-index: 0; pointer-events: none; border-radius: 50%; filter: blur(90px); opacity: .45;
+    }
+    .glow.a { width: 520px; height: 520px; background: #065F46; top: -160px; left: -120px; }
+    .glow.b { width: 460px; height: 460px; background: #0F766E; top: 30%; right: -180px; opacity: .3; }
+    .page { position: relative; z-index: 1; overflow-x: clip; }
+    .hero > * { min-width: 0; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 12px; z-index: 50; margin: 12px auto 0; max-width: 1140px; padding: 0 16px;
+    }
+    .bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 12px 10px 16px; border-radius: 16px;
+      background: rgba(6, 18, 13, 0.6); border: 1px solid var(--line);
+      backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 800; font-size: 1.1rem; }
+    .brand:hover { text-decoration: none; }
+    .brand img { width: 32px; height: 32px; border-radius: 9px; }
+    .nav { display: flex; gap: 2px; }
+    .nav a { color: var(--muted); padding: 8px 12px; border-radius: 10px; font-size: .9rem; font-weight: 500; }
+    .nav a:hover { color: var(--text); background: var(--glass-strong); text-decoration: none; }
+    @media (max-width: 860px) { .nav { display: none; } }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 12px;
+      font-weight: 700; font-size: .95rem; border: 1px solid transparent; transition: transform .15s, box-shadow .15s, background .15s;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn-primary { background: linear-gradient(135deg, var(--green), #059669); color: #fff; box-shadow: 0 8px 30px rgba(16, 185, 129, .35); }
+    .btn-primary:hover { box-shadow: 0 10px 40px rgba(16, 185, 129, .5); }
+    .btn-ghost { background: var(--glass); border-color: var(--line); color: var(--text); }
+    .btn-sm { padding: 9px 14px; font-size: .85rem; border-radius: 10px; }
+    .btn svg { width: 18px; height: 18px; flex: none; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding: 72px 0 56px; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; padding-top: 48px; } }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px;
+      background: rgba(16, 185, 129, .12); border: 1px solid rgba(52, 211, 153, .25);
+      color: var(--green-2); font-size: .8rem; font-weight: 600; letter-spacing: .02em;
+    }
+    .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-2); box-shadow: 0 0 10px var(--green-2); }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 4.8rem); line-height: 1.02; margin: 20px 0 16px; letter-spacing: -0.035em; font-weight: 900; }
+    .grad { background: linear-gradient(120deg, #6EE7B7, #2DD4BF 45%, #10B981); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero .lead { font-size: 1.2rem; color: var(--muted); max-width: 540px; margin: 0 0 6px; }
+    .hero .lead-hi { font-size: 1.05rem; color: var(--text); opacity: .85; margin: 0; }
+    @media (max-width: 900px) { .hero .lead { margin-inline: auto; } }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    @media (max-width: 900px) { .cta { justify-content: center; } }
+    .trust { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 28px; color: var(--muted); font-size: .88rem; }
+    .trust span { display: inline-flex; align-items: center; gap: 6px; }
+    .trust svg { width: 16px; height: 16px; color: var(--green-2); }
+    @media (max-width: 900px) { .trust { justify-content: center; } }
+
+    /* Phones */
+    .phones { position: relative; height: 560px; perspective: 1400px; overflow: visible; }
+    @media (max-width: 900px) { .phones { height: 420px; max-width: 360px; margin: 0 auto; width: 100%; overflow: hidden; } }
+    .phone {
+      position: absolute; width: 250px; border-radius: 34px; padding: 8px; background: #0B1612;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03) inset, 0 0 60px rgba(16,185,129,.15);
+      transform-style: preserve-3d; transition: transform .25s ease-out;
+    }
+    .phone img { width: 100%; height: auto; border-radius: 27px; aspect-ratio: 430 / 760; object-fit: cover; }
+    .phone.front { left: 50%; top: 10px; transform: translateX(-30%) rotateY(-14deg) rotateX(6deg); z-index: 2; }
+    .phone.back { left: 50%; top: 70px; transform: translateX(-95%) rotateY(-14deg) rotateX(6deg) scale(.88); opacity: .75; z-index: 1; }
+    @media (max-width: 900px) { .phone { width: 190px; } }
+    @media (max-width: 480px) { .bar .btn-sm { display: none; } .hero h1 br { display: none; } }
+
+    /* Sections */
+    section { padding: 72px 0; }
+    .kicker { color: var(--green-2); font-weight: 700; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+    .h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.12; letter-spacing: -0.025em; margin: 10px 0 12px; font-weight: 800; }
+    .sub { color: var(--muted); max-width: 620px; margin: 0 0 36px; font-size: 1.05rem; }
+    .center { text-align: center; }
+    .center .sub { margin-inline: auto; }
+
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      position: relative; background: var(--glass); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 24px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); overflow: hidden;
+      transition: border-color .2s, transform .2s, background .2s;
+    }
+    .card::before {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+      background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(52, 211, 153, .12), transparent 45%);
+    }
+    .card:hover { border-color: rgba(52, 211, 153, .35); background: var(--glass-strong); }
+    .card:hover::before { opacity: 1; }
+    .card h3 { margin: 0 0 6px; font-size: 1.08rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .ic {
+      width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(16,185,129,.22), rgba(45,212,191,.12)); border: 1px solid rgba(52,211,153,.25); color: var(--green-2);
+    }
+    .ic svg { width: 22px; height: 22px; }
+
+    /* Showcase */
+    .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 800px) { .showcase { grid-template-columns: 1fr; } }
+    .shot { padding: 0; }
+    .shot img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; }
+    .shot .cap { padding: 18px 22px; }
+
+    /* Steps */
+    .steps { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); counter-reset: s; }
+    .step .num {
+      counter-increment: s; font-size: .8rem; font-weight: 800; color: var(--bg); background: var(--green-2);
+      width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 14px;
+    }
+    .step .num::before { content: counter(s); }
+
+    /* Privacy band */
+    .band {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center;
+      padding: 40px; border-radius: 24px; border: 1px solid rgba(52,211,153,.25);
+      background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(15,118,110,.06));
+    }
+    @media (max-width: 800px) { .band { grid-template-columns: 1fr; padding: 28px 20px; } }
+    .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .checks li { display: flex; gap: 10px; align-items: flex-start; color: var(--text); }
+    .checks svg { width: 20px; height: 20px; color: var(--green-2); flex: none; margin-top: 2px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--text); font-weight: 600; width: 38%; }
+    td { color: var(--muted); }
+    tr:last-child th, tr:last-child td { border-bottom: 0; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .82em; background: rgba(52,211,153,.12); color: var(--green-2); padding: 2px 6px; border-radius: 6px; }
+    @media (max-width: 600px) { th, td { display: block; width: 100%; } th { border-bottom: 0; padding-bottom: 2px; } }
+
+    a.card { display: block; color: inherit; }
+    a.card:hover { text-decoration: none; transform: translateY(-3px); }
+    .more { display: inline-flex; gap: 6px; margin-top: 14px; color: var(--green-2); font-weight: 600; font-size: .9rem; }
+
+    /* Final CTA */
+    .final { text-align: center; padding: 56px 24px; border-radius: 28px; border: 1px solid var(--line);
+      background: radial-gradient(600px circle at 50% 0%, rgba(16,185,129,.22), transparent 60%), var(--glass); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 40px 0 120px; color: var(--muted); font-size: .9rem; }
+    .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+    @media (max-width: 700px) { .foot { grid-template-columns: 1fr; } }
+    .foot h4 { color: var(--text); margin: 0 0 12px; font-size: .9rem; }
+    .foot ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    .foot a { color: var(--muted); }
+    .foot a:hover { color: var(--green-2); }
+
+    /* Quick links dock */
+    .dock {
+      position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 60;
+      display: flex; gap: 4px; padding: 6px; border-radius: 16px;
+      background: rgba(6, 18, 13, 0.72); border: 1px solid var(--line);
+      backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+      box-shadow: 0 12px 40px rgba(0,0,0,.45); max-width: calc(100vw - 32px); overflow-x: auto;
+    }
+    .dock a {
+      display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 64px;
+      padding: 8px 10px; border-radius: 12px; color: var(--muted); font-size: .72rem; font-weight: 600; white-space: nowrap;
+    }
+    .dock a:hover, .dock a:focus-visible { background: var(--glass-strong); color: var(--text); text-decoration: none; }
+    .dock a.play { background: rgba(16,185,129,.16); color: var(--green-2); }
+    .dock svg { width: 20px; height: 20px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .phone { transition: none; }
+    }
+    :focus-visible { outline: 2px solid var(--green-2); outline-offset: 3px; border-radius: 8px; }
+  </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="bg3d" aria-hidden="true"></canvas>
+<div class="glow a" aria-hidden="true"></div>
+<div class="glow b" aria-hidden="true"></div>
 
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html"><span class="brand-mark">U</span>Udhar Lo</a>
-    <nav class="nav" aria-label="Main">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="delete-account.html">Delete Data</a>
-    </nav>
-  </div>
-</header>
+<div class="page">
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="32" height="32">Udhar Lo</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#google-data">Google data</a>
+        <a href="#legal">Legal</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=co.udharlo">Get the app</a>
+    </div>
+  </header>
 
-<main>
-  <div class="container">
-    <section class="hero">
-      <span class="eyebrow">Digital Khata for Indian businesses</span>
-      <h1>Udhar Lo</h1>
-      <p>Udhar Lo replaces your paper khata book. Track how much each customer owes you, record payments, and send reminders, all from your phone.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.udharlo">Get it on Google Play</a>
-        <a class="btn btn-ghost" href="#google-data">How we use your Google account</a>
+  <main id="main">
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <span class="pill"><span class="dot"></span>Digital Khata, made for India</span>
+          <h1 id="hero-title"><span class="grad">Udhar Lo</span> <br>your khata, now on your phone.</h1>
+          <p class="lead">Track how much every customer owes you, record payments in one tap, and send reminders on WhatsApp. Built for shopkeepers and small businesses.</p>
+          <p class="lead-hi">Diya, Liya, Baaki. Sab hisaab ek jagah.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.udharlo">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8 13.8 12 3.6 22.2a1.5 1.5 0 0 1-.6-1.2V3a1.5 1.5 0 0 1 .6-1.2Zm11.3 11.3 2.4 2.4-11 6.3 8.6-8.7Zm3.7-3.7 2.8 1.6a1.2 1.2 0 0 1 0 2l-2.8 1.6-2.6-2.6 2.6-2.6ZM6.3 2.2l11 6.3-2.4 2.4-8.6-8.7Z"/></svg>
+              Get it on Google Play
+            </a>
+            <a class="btn btn-ghost" href="#features">See features</a>
+          </div>
+          <div class="trust">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Free to use</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Data stays on your phone</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Hindi and English</span>
+          </div>
+        </div>
+        <div class="phones" id="phones" aria-label="Udhar Lo app screenshots">
+          <div class="phone back"><img src="img/screen-ledger.jpg" alt="Customer ledger screen showing credit given and payment received entries" width="430" height="760" loading="eager"></div>
+          <div class="phone front"><img src="img/screen-dashboard.jpg" alt="Udhar Lo dashboard showing You'll Get and You'll Give totals and customer list" width="430" height="760" loading="eager"></div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" aria-labelledby="features-title">
+        <div class="center reveal">
+          <span class="kicker">Features</span>
+          <h2 class="h2" id="features-title">Everything your paper khata did, and more</h2>
+          <p class="sub">Simple enough for anyone at the counter. Powerful enough to run your whole shop's credit book.</p>
+        </div>
+        <div class="grid">
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3a4.5 4.5 0 0 0 0-9"/></svg></div>
+            <h3>Credit and payment entries</h3>
+            <p>Record credit given (Diya) and payments received (Liya) for every customer and supplier, with notes and bills.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg></div>
+            <h3>Live balances</h3>
+            <p>See "You'll Get" and "You'll Give" totals and each customer's balance the moment you add an entry.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12Z"/></svg></div>
+            <h3>WhatsApp and SMS reminders</h3>
+            <p>Share a customer's balance or a polite payment reminder in one tap.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6ZM14 3v6h6M8 13h8M8 17h5"/></svg></div>
+            <h3>PDF statements and invoices</h3>
+            <p>Create ledger statements, invoices and a digital visiting card to share with customers.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3ZM19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
+            <h3>Voice entry</h3>
+            <p>Busy at the counter? Speak the entry instead of typing it.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8ZM3 8l9 5 9-5M12 13v8"/></svg></div>
+            <h3>Stock and due dates</h3>
+            <p>Keep track of products in stock and see which payments are due today.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+            <h3>PIN lock</h3>
+            <p>Keep your khata private with an app PIN.</p>
+          </article>
+          <article class="card reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 18a5 5 0 0 1-.5-10A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9H7Z"/><path d="m9 13 3-3 3 3M12 10v7"/></svg></div>
+            <h3>Google Drive backup</h3>
+            <p>Back up to your own Google Drive and restore on a new phone. Optional.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Showcase -->
+      <section aria-label="App screenshots">
+        <div class="showcase">
+          <figure class="card shot reveal" style="margin:0">
+            <img src="img/dashboard.jpg" alt="Smart store dashboard with customer list and balances" width="500" height="889" loading="lazy">
+            <figcaption class="cap"><h3>Smart store dashboard</h3><p>All customers, stock and today's dues on one screen.</p></figcaption>
+          </figure>
+          <figure class="card shot reveal" style="margin:0">
+            <img src="img/ledger.jpg" alt="Customer ledger in chat style with WhatsApp and SMS share buttons" width="500" height="889" loading="lazy">
+            <figcaption class="cap"><h3>Chat-style customer ledger</h3><p>Every entry for a customer in one timeline, with bills and share buttons.</p></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how" aria-labelledby="how-title">
+        <div class="center reveal">
+          <span class="kicker">How it works</span>
+          <h2 class="h2" id="how-title">Start in under a minute</h2>
+          <p class="sub">No paperwork, no training.</p>
+        </div>
+        <div class="steps">
+          <div class="card step reveal"><div class="num"></div><h3>Add a customer</h3><p>Type a name or pick from your phone contacts.</p></div>
+          <div class="card step reveal"><div class="num"></div><h3>Record Diya or Liya</h3><p>Enter the amount by typing or by voice. The balance updates instantly.</p></div>
+          <div class="card step reveal"><div class="num"></div><h3>Send a reminder</h3><p>Share the balance on WhatsApp or SMS and get paid faster.</p></div>
+        </div>
+      </section>
+
+      <!-- Privacy -->
+      <section id="privacy" aria-labelledby="privacy-title">
+        <div class="band reveal">
+          <div>
+            <span class="kicker">Privacy first</span>
+            <h2 class="h2" id="privacy-title">Your hisaab stays with you</h2>
+            <p class="sub" style="margin-bottom:0">Udhar Lo keeps your ledger on your own phone. We don't run servers that store your transactions.</p>
+          </div>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ledger data stored on your device</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Backups go only to your own Google Drive</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No ads, no selling of data</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Delete everything any time</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Google data -->
+      <section id="google-data" aria-labelledby="google-title">
+        <div class="reveal">
+          <span class="kicker">Google account</span>
+          <h2 class="h2" id="google-title">How Udhar Lo uses your Google account</h2>
+          <p class="sub">Signing in with Google is used only to back up and restore your khata in your own Google Drive.</p>
+        </div>
+        <div class="card reveal" style="padding:8px">
+          <table>
+            <tbody>
+              <tr><th>Email address and basic profile</th><td>Shows which Google account your backup is linked to and pre-fills your name during setup.</td></tr>
+              <tr><th>Google Drive, files created by this app only (<code>drive.file</code>)</th><td>Saves your backup file to a "Udhar Lo Backups" folder in your Drive and restores it on a new phone. Udhar Lo cannot see or change any other files in your Drive.</td></tr>
+              <tr><th>What we never do</th><td>We never send your Google data to our own servers, share it with anyone, or use it for advertising.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sub reveal" style="margin-top:16px">Full details are in our <a href="privacy-policy.html#google-user-data">Privacy Policy</a>. You can revoke access any time from your <a href="https://myaccount.google.com/permissions">Google Account permissions</a>.</p>
+      </section>
+
+      <!-- Legal -->
+      <section id="legal" aria-labelledby="legal-title">
+        <div class="center reveal">
+          <span class="kicker">Legal and support</span>
+          <h2 class="h2" id="legal-title">Clear policies, no fine print</h2>
+        </div>
+        <div class="grid">
+          <a class="card reveal" href="privacy-policy.html">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg></div>
+            <h3>Privacy Policy</h3><p>What data the app uses, why, and how it is protected.</p><span class="more">Read policy →</span>
+          </a>
+          <a class="card reveal" href="terms.html">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6ZM14 3v6h6"/></svg></div>
+            <h3>Terms of Service</h3><p>The rules for using Udhar Lo.</p><span class="more">Read terms →</span>
+          </a>
+          <a class="card reveal" href="delete-account.html">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></div>
+            <h3>Delete Account and Data</h3><p>Remove your data from your phone and Google Drive.</p><span class="more">See steps →</span>
+          </a>
+          <a class="card reveal" href="mailto:udharlo.support@gmail.com">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+            <h3>Contact Support</h3><p>udharlo.support@gmail.com</p><span class="more">Send email →</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section id="contact" aria-labelledby="final-title">
+        <div class="final reveal">
+          <img src="img/icon.png" alt="" width="64" height="64" style="margin:0 auto 16px;border-radius:16px">
+          <h2 class="h2" id="final-title">Close the paper khata. Open <span class="grad">Udhar Lo</span>.</h2>
+          <p class="sub" style="margin-inline:auto">Free on Google Play. Questions? Write to <a href="mailto:udharlo.support@gmail.com">udharlo.support@gmail.com</a>.</p>
+          <div class="cta" style="justify-content:center">
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=co.udharlo">Get it on Google Play</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="32" height="32">Udhar Lo</a>
+        <p style="margin:12px 0 0;max-width:320px">Digital khata app for shopkeepers and small businesses. Developed by Suresh Vaishnav.</p>
+        <p style="margin:12px 0 0">&copy; 2026 Udhar Lo. All rights reserved.</p>
       </div>
-    </section>
-
-    <section>
-      <h2 class="section-title">What Udhar Lo does</h2>
-      <p class="section-sub">Built for shopkeepers, small business owners, freelancers and personal bookkeeping.</p>
-      <div class="grid">
-        <div class="card">
-          <div class="icon">₹</div>
-          <h3>Credit and payment entries</h3>
-          <p>Record credit given (Diya) and payments received (Liya) for every customer and supplier.</p>
-        </div>
-        <div class="card">
-          <div class="icon">⚖</div>
-          <h3>Live balances</h3>
-          <p>See each customer's outstanding balance and your total receivables at a glance.</p>
-        </div>
-        <div class="card">
-          <div class="icon">✉</div>
-          <h3>Payment reminders</h3>
-          <p>Send polite payment reminders to customers on WhatsApp and SMS.</p>
-        </div>
-        <div class="card">
-          <div class="icon">⎙</div>
-          <h3>PDF statements and invoices</h3>
-          <p>Create and share ledger statements, invoices and digital visiting cards.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🎙</div>
-          <h3>Voice entry</h3>
-          <p>Add transactions by speaking instead of typing.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🔒</div>
-          <h3>PIN lock</h3>
-          <p>Protect your khata with an app PIN.</p>
-        </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="https://play.google.com/store/apps/details?id=co.udharlo">Google Play</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#google-data">Google data use</a></li>
+        </ul>
       </div>
-    </section>
-
-    <section>
-      <div class="callout">
-        <strong>Your data stays on your phone.</strong> Udhar Lo stores your ledger on your device. We do not run servers that store your transactions, and we never sell or share your data.
+      <div>
+        <h4>Legal and support</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="delete-account.html">Delete Account and Data</a></li>
+          <li><a href="mailto:udharlo.support@gmail.com">udharlo.support@gmail.com</a></li>
+        </ul>
       </div>
-    </section>
+    </div>
+  </footer>
+</div>
 
-    <section id="google-data">
-      <h2 class="section-title">How Udhar Lo uses your Google account</h2>
-      <p class="section-sub">Signing in with Google is used only to back up and restore your khata in your own Google Drive.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Email and basic profile</h3>
-          <p>Shows which Google account your backup is linked to and pre-fills your name during setup.</p>
-        </div>
-        <div class="card">
-          <h3>Google Drive (app-created files only)</h3>
-          <p>Saves your backup file to a "Udhar Lo Backups" folder in your own Drive and restores it on a new phone. Udhar Lo cannot see any other files in your Drive.</p>
-        </div>
-      </div>
-      <p class="section-sub" style="margin-top:16px">Full details are in our <a href="privacy-policy.html#google-user-data">Privacy Policy</a>.</p>
-    </section>
+<!-- Quick links dock -->
+<nav class="dock" aria-label="Quick links">
+  <a class="play" href="https://play.google.com/store/apps/details?id=co.udharlo">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8 13.8 12 3.6 22.2a1.5 1.5 0 0 1-.6-1.2V3a1.5 1.5 0 0 1 .6-1.2Zm11.3 11.3 2.4 2.4-11 6.3 8.6-8.7Zm3.7-3.7 2.8 1.6a1.2 1.2 0 0 1 0 2l-2.8 1.6-2.6-2.6 2.6-2.6ZM6.3 2.2l11 6.3-2.4 2.4-8.6-8.7Z"/></svg>Get app
+  </a>
+  <a href="privacy-policy.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg>Privacy
+  </a>
+  <a href="terms.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6ZM14 3v6h6"/></svg>Terms
+  </a>
+  <a href="delete-account.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>Delete data
+  </a>
+  <a href="mailto:udharlo.support@gmail.com">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Contact
+  </a>
+</nav>
 
-    <section>
-      <h2 class="section-title">Legal and support</h2>
-      <p class="section-sub">Everything you need to know about your data and your rights.</p>
-      <div class="grid">
-        <a class="card" href="privacy-policy.html">
-          <h3>Privacy Policy</h3>
-          <p>What data the app uses, why, and how it is protected.</p>
-          <span class="more">Read policy →</span>
-        </a>
-        <a class="card" href="terms.html">
-          <h3>Terms of Service</h3>
-          <p>The rules for using Udhar Lo.</p>
-          <span class="more">Read terms →</span>
-        </a>
-        <a class="card" href="delete-account.html">
-          <h3>Account and Data Deletion</h3>
-          <p>How to delete your data from your phone and Google Drive.</p>
-          <span class="more">See steps →</span>
-        </a>
-        <a class="card" href="mailto:udharlo.support@gmail.com">
-          <h3>Contact Support</h3>
-          <p>udharlo.support@gmail.com</p>
-          <span class="more">Send email →</span>
-        </a>
-      </div>
-    </section>
-  </div>
-</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-<footer class="site-footer">
-  <div class="container">
-    <span>&copy; 2026 Udhar Lo. All rights reserved.</span>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="index.html">Home</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="delete-account.html">Delete Data</a>
-      <a href="https://play.google.com/store/apps/details?id=co.udharlo">Google Play</a>
-      <a href="mailto:udharlo.support@gmail.com">Contact</a>
-    </nav>
-  </div>
-</footer>
+    // Scroll reveal
+    var els = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function (e) { e.classList.add('in'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(function (e) { io.observe(e); });
+    }
 
+    // Card spotlight follows cursor
+    document.querySelectorAll('.card').forEach(function (c) {
+      c.addEventListener('pointermove', function (e) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+
+    // Phone tilt follows cursor (desktop only)
+    var phones = document.getElementById('phones');
+    var front = phones.querySelector('.front'), back = phones.querySelector('.back');
+    if (!reduce && window.matchMedia('(hover: hover)').matches) {
+      phones.addEventListener('pointermove', function (e) {
+        var r = phones.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        front.style.transform = 'translateX(-30%) rotateY(' + (-14 + x * 18) + 'deg) rotateX(' + (6 - y * 12) + 'deg)';
+        back.style.transform = 'translateX(-95%) rotateY(' + (-14 + x * 10) + 'deg) rotateX(' + (6 - y * 8) + 'deg) scale(.88)';
+      });
+      phones.addEventListener('pointerleave', function () { front.style.transform = ''; back.style.transform = ''; });
+    }
+
+    // 3D particle wave background. Skipped for reduced motion and low-end devices.
+    window.addEventListener('load', function () {
+      var lowEnd = (navigator.hardwareConcurrency || 4) <= 2 || (navigator.deviceMemory && navigator.deviceMemory <= 2);
+      if (reduce || lowEnd || !window.THREE) return;
+      var canvas = document.getElementById('bg3d');
+      var renderer;
+      try { renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false, powerPreference: 'low-power' }); }
+      catch (err) { return; }
+      var mobile = window.innerWidth < 768;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(60, 1, 1, 2000);
+      camera.position.set(0, 140, 420);
+      camera.lookAt(0, 0, 0);
+
+      var cols = mobile ? 60 : 110, rows = mobile ? 40 : 70, gap = 12;
+      var count = cols * rows, pos = new Float32Array(count * 3), base = new Float32Array(count * 2);
+      for (var i = 0, k = 0; i < cols; i++) for (var j = 0; j < rows; j++, k++) {
+        base[k * 2] = (i - cols / 2) * gap; base[k * 2 + 1] = (j - rows / 2) * gap;
+        pos[k * 3] = base[k * 2]; pos[k * 3 + 2] = base[k * 2 + 1];
+      }
+      var geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      var mat = new THREE.PointsMaterial({ color: 0x34D399, size: 2.2, transparent: true, opacity: 0.55, sizeAttenuation: true });
+      var points = new THREE.Points(geo, mat);
+      scene.add(points);
+
+      function resize() {
+        var w = window.innerWidth, h = window.innerHeight;
+        renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+      }
+      resize(); window.addEventListener('resize', resize);
+
+      var mx = 0, my = 0, tx = 0, ty = 0;
+      window.addEventListener('pointermove', function (e) { tx = e.clientX / window.innerWidth - 0.5; ty = e.clientY / window.innerHeight - 0.5; });
+
+      var running = true, t = 0;
+      document.addEventListener('visibilitychange', function () { running = !document.hidden; if (running) loop(); });
+      function loop() {
+        if (!running) return;
+        t += 0.012; mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
+        var p = geo.attributes.position.array;
+        for (var n = 0; n < count; n++) {
+          var x = base[n * 2], z = base[n * 2 + 1];
+          p[n * 3 + 1] = Math.sin(x * 0.012 + t) * 18 + Math.cos(z * 0.016 + t * 1.3) * 14;
+        }
+        geo.attributes.position.needsUpdate = true;
+        points.rotation.y = mx * 0.35; points.rotation.x = my * 0.12;
+        camera.position.y = 140 - window.scrollY * 0.08;
+        camera.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+        requestAnimationFrame(loop);
+      }
+      loop();
+    });
+  })();
+</script>
 </body>
 </html>
