@@ -1,236 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions - Udhar Lo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4F46E5;
-            --primary-dark: #3730A3;
-            --primary-light: #EEF2FF;
-            --text-main: #1F2937;
-            --text-muted: #4B5563;
-            --bg-page: #F9FAFB;
-            --bg-card: #FFFFFF;
-            --border: #E5E7EB;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            line-height: 1.7;
-            padding: 0;
-            margin: 0;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #4F46E5 0%, #312E81 100%);
-            color: #FFFFFF;
-            padding: 48px 24px;
-            text-align: center;
-        }
-
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            color: #FFFFFF;
-            padding: 6px 16px;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .header h1 {
-            color: #FFFFFF !important;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -0.025em;
-        }
-
-        .header p {
-            color: rgba(255, 255, 255, 0.95) !important;
-            font-size: 1.15rem;
-            font-weight: 500;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.15);
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .nav-btn:hover {
-            background: #FFFFFF;
-            color: var(--primary);
-        }
-
-        .nav-btn.active {
-            background: #FFFFFF;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 840px;
-            margin: -32px auto 60px;
-            padding: 0 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-            border: 1px solid var(--border);
-            padding: 40px;
-        }
-
-        h2 {
-            color: var(--text-main);
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-top: 36px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2::before {
-            content: "";
-            display: inline-block;
-            width: 4px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 4px;
-        }
-
-        p {
-            margin-bottom: 16px;
-            color: var(--text-muted);
-        }
-
-        ul {
-            margin-bottom: 20px;
-            padding-left: 24px;
-            color: var(--text-muted);
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .contact-box {
-            background: #F3F4F6;
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 32px;
-            text-align: center;
-        }
-
-        .contact-box a {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 32px 20px;
-            font-size: 0.875rem;
-            color: #9CA3AF;
-            border-top: 1px solid var(--border);
-        }
-
-        @media (max-width: 640px) {
-            .header h1 {
-                font-size: 1.875rem;
-            }
-            .content-card {
-                padding: 24px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - Udhar Lo</title>
+  <meta name="description" content="Terms of Service for the Udhar Lo digital khata app.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="header-content">
-            <span class="badge">Legal Documentation</span>
-            <h1>Terms & Conditions</h1>
-            <p>Udhar Lo — Smart Digital Khata & Business Ledger</p>
-            <div class="nav-links">
-                <a href="privacy-policy.html" class="nav-btn">Privacy Policy</a>
-                <a href="terms.html" class="nav-btn active">Terms & Conditions</a>
-                <a href="delete-account.html" class="nav-btn">Account Deletion</a>
-            </div>
-        </div>
-    </header>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><span class="brand-mark">U</span>Udhar Lo</a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html" aria-current="page">Terms</a>
+      <a href="delete-account.html">Delete Data</a>
+    </nav>
+  </div>
+</header>
 
-    <main class="container">
-        <div class="content-card">
-            <h2>1. Acceptance of Terms</h2>
-            <p>By downloading, installing, or using the <strong>Udhar Lo</strong> mobile application, you agree to comply with and be bound by these Terms and Conditions. If you do not agree, please do not use the app.</p>
+<main class="container narrow">
+  <div class="doc-head">
+    <span class="eyebrow">Legal</span>
+    <h1>Terms of Service</h1>
+    <p>The rules for using Udhar Lo.</p>
+  </div>
 
-            <h2>2. Service Description</h2>
-            <p><strong>Udhar Lo</strong> is a digital ledger and financial bookkeeping utility designed to help shopkeepers, small business owners, freelancers, and individuals record and track credits, debits, invoices, and customer transactions.</p>
+  <div class="meta">
+    <div><span>App name:</span> Udhar Lo</div>
+    <div><span>Developer:</span> Suresh Vaishnav</div>
+    <div><span>Effective:</span> September 14, 2026</div>
+    <div><span>Last updated:</span> October 4, 2026</div>
+  </div>
 
-            <h2>3. User Responsibilities</h2>
-            <ul>
-                <li>You are solely responsible for maintaining the accuracy of entries made in your khata.</li>
-                <li>You are responsible for securing your device and setting an app PIN/Biometric lock to prevent unauthorized access.</li>
-                <li>You are responsible for initiating regular Google Drive backups to avoid data loss in case of device replacement or damage.</li>
-            </ul>
+  <article class="doc">
+    <h2 id="acceptance">1. Acceptance of terms</h2>
+    <p>By downloading, installing or using the Udhar Lo mobile application, you agree to these Terms of Service. If you do not agree, please do not use the app.</p>
 
-            <h2>4. Limitation of Liability</h2>
-            <p>Udhar Lo provides bookkeeping and ledger calculation utilities "as is". We are not a banking institution or a credit lending agency. The developer shall not be liable for any direct, indirect, incidental, or consequential damages resulting from lost records, incorrect user entries, or disputes between buyers and sellers.</p>
+    <h2 id="service">2. The service</h2>
+    <p>Udhar Lo is a digital ledger (khata) app that helps shopkeepers, small business owners, freelancers and individuals record and track credit, payments, invoices and customer transactions.</p>
 
-            <h2>5. Intellectual Property</h2>
-            <p>All software codes, brand names, visual assets, logos, and UI designs related to Udhar Lo are the proprietary property of the developer (Suresh Vaishnav).</p>
+    <h2 id="responsibilities">3. Your responsibilities</h2>
+    <ul>
+      <li>You are responsible for the accuracy of the entries you make in your khata.</li>
+      <li>You are responsible for securing your phone and setting an app PIN to prevent unauthorised access.</li>
+      <li>You are responsible for taking regular Google Drive backups to avoid losing data if your phone is lost, replaced or damaged.</li>
+      <li>You must use the app only for lawful purposes, and send reminders only to people you have a genuine transaction with.</li>
+    </ul>
 
-            <div class="contact-box">
-                <h3>Need Assistance?</h3>
-                <p>For questions or support regarding these terms, contact:</p>
-                <p><strong>Email:</strong> <a href="mailto:udharlo.support@gmail.com">udharlo.support@gmail.com</a></p>
-            </div>
-        </div>
-    </main>
+    <h2 id="privacy">4. Privacy</h2>
+    <p>Your use of Udhar Lo is also governed by our <a href="privacy-policy.html">Privacy Policy</a>, which explains what data the app uses and how.</p>
 
-    <footer>
-        &copy; 2026 Udhar Lo. All rights reserved.
-    </footer>
+    <h2 id="liability">5. Limitation of liability</h2>
+    <p>Udhar Lo provides bookkeeping and ledger tools on an "as is" basis. We are not a bank, lender or financial institution. The developer is not liable for any direct, indirect, incidental or consequential loss arising from lost records, incorrect entries, or disputes between you and your customers or suppliers.</p>
+
+    <h2 id="ip">6. Intellectual property</h2>
+    <p>The Udhar Lo name, logo, software, visual assets and designs are the property of the developer, Suresh Vaishnav. The data you enter belongs to you.</p>
+
+    <h2 id="changes">7. Changes to these terms</h2>
+    <p>We may update these terms from time to time. Changes will be posted on this page with a new "Last updated" date. Continuing to use the app after changes means you accept the updated terms.</p>
+
+    <div class="contact-box">
+      <h2>Need help?</h2>
+      <p>For questions about these terms, contact <a href="mailto:udharlo.support@gmail.com">udharlo.support@gmail.com</a>.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 Udhar Lo. All rights reserved.</span>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="delete-account.html">Delete Data</a>
+      <a href="https://play.google.com/store/apps/details?id=co.udharlo">Google Play</a>
+      <a href="mailto:udharlo.support@gmail.com">Contact</a>
+    </nav>
+  </div>
+</footer>
 
 </body>
 </html>
