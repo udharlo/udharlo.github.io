@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account & Data Deletion - Udhar Lo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #DC2626;
+            --primary-dark: #991B1B;
+            --primary-light: #FEF2F2;
+            --text-main: #1F2937;
+            --text-muted: #4B5563;
+            --bg-page: #F9FAFB;
+            --bg-card: #FFFFFF;
+            --border: #E5E7EB;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #DC2626 0%, #7F1D1D 100%);
+            color: #FFFFFF;
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            color: #FFFFFF;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .header h1 {
+            color: #FFFFFF !important;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.025em;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #FFFFFF;
+            color: var(--primary);
+        }
+
+        .nav-btn.active {
+            background: #FFFFFF;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 840px;
+            margin: -32px auto 60px;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border);
+            padding: 40px;
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 36px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        ol, ul {
+            margin-bottom: 20px;
+            padding-left: 24px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .step-card {
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .step-card h3 {
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .contact-box {
+            background: #FEF2F2;
+            border: 1px solid #FCA5A5;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .contact-box a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 0.875rem;
+            color: #9CA3AF;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.875rem;
+            }
+            .content-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <span class="badge">Google Play Compliance</span>
+            <h1>Account & Data Deletion</h1>
+            <p>Udhar Lo — Smart Digital Khata & Business Ledger</p>
+            <div class="nav-links">
+                <a href="privacy-policy.html" class="nav-btn">Privacy Policy</a>
+                <a href="terms.html" class="nav-btn">Terms & Conditions</a>
+                <a href="delete-account.html" class="nav-btn active">Account Deletion</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="content-card">
+            <h2>User Data Deletion Policy</h2>
+            <p>At <strong>Udhar Lo</strong>, we give users full control over their financial records and personal data. Below are the simple steps to delete your data locally or from cloud backup.</p>
+
+            <div class="step-card">
+                <h3>Option 1: In-App Complete Data Wipe (Instant)</h3>
+                <ol>
+                    <li>Open <strong>Udhar Lo</strong> on your phone.</li>
+                    <li>Go to <strong>Settings</strong> ➔ <strong>App Settings</strong>.</li>
+                    <li>Tap <strong>Clear Data / Reset App</strong> or simply uninstall the app.</li>
+                    <li>All local SQLite database files, transaction records, customer entries, and cached bills are instantly and permanently deleted from your phone.</li>
+                </ol>
+            </div>
+
+            <div class="step-card">
+                <h3>Option 2: Delete Google Drive Cloud Backup</h3>
+                <ol>
+                    <li>Open <a href="https://drive.google.com" target="_blank" style="color: var(--primary); font-weight: 600;">Google Drive</a> on your device or browser with the Google account used in Udhar Lo.</li>
+                    <li>Go to <strong>Settings</strong> ➔ <strong>Manage Apps</strong>.</li>
+                    <li>Find <strong>Udhar Lo</strong> in the connected apps list.</li>
+                    <li>Click <strong>Options</strong> ➔ <strong>Delete hidden app data</strong> or remove the UdharLo backup archive.</li>
+                </ol>
+            </div>
+
+            <div class="step-card">
+                <h3>Option 3: Request Manual Data Deletion via Support</h3>
+                <p>If you need assistance deleting any associated metadata or need verification, send an email to our support team from your registered Google email address:</p>
+                <p><strong>Email Subject:</strong> <code>Request Data Deletion - Udhar Lo</code></p>
+                <p><strong>Support Email:</strong> <a href="mailto:udharlo.support@gmail.com" style="color: var(--primary); font-weight: 600;">udharlo.support@gmail.com</a></p>
+                <p>All deletion requests are processed within 24–48 hours.</p>
+            </div>
+
+            <div class="contact-box">
+                <h3 style="color: var(--primary-dark); margin-bottom: 8px;">Have Any Questions?</h3>
+                <p>Contact Developer at <a href="mailto:udharlo.support@gmail.com">udharlo.support@gmail.com</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Udhar Lo. All rights reserved.
+    </footer>
+
+</body>
+</html>
