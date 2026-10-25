@@ -46,10 +46,14 @@
     "inLanguage": ["en", "hi"],
     "image": "https://udharlo.github.io/img/og-cover.png",
     "screenshot": [
-      "https://udharlo.github.io/img/screen-dashboard.jpg",
-      "https://udharlo.github.io/img/screen-ledger.jpg",
-      "https://udharlo.github.io/img/dashboard.jpg",
-      "https://udharlo.github.io/img/ledger.jpg"
+      "https://udharlo.github.io/img/1_customer_chat_ledger.png",
+      "https://udharlo.github.io/img/2_smart_store_dashboard.png",
+      "https://udharlo.github.io/img/udhar_lo_slide_1_hd.png",
+      "https://udharlo.github.io/img/udhar_lo_slide_2_hd.png",
+      "https://udharlo.github.io/img/udhar_lo_slide_3_hd.png",
+      "https://udharlo.github.io/img/udhar_lo_slide_4_hd.png",
+      "https://udharlo.github.io/img/udhar_lo_slide_5_hd.png",
+      "https://udharlo.github.io/img/udhar_lo_slide_6_hd.png"
     ],
     "featureList": "Customer and supplier ledger (Diya and Liya), instant running balance, WhatsApp and SMS payment reminders with balance & shop UPI QR, GST & non-GST PDF invoice generator, voice entry in Hindi and English, stock and inventory tracking with alerts, visual sales and collection reports, 100% offline mode, PIN lock, optional Google Drive backup",
     "url": "https://udharlo.github.io/",
@@ -305,6 +309,39 @@
     }
     .ic svg { width: 22px; height: 22px; }
 
+    /* Screens Showcase Grid */
+    .screens-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+    }
+    .screen-card {
+      background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); display: flex; flex-direction: column;
+    }
+    .screen-card:hover {
+      transform: translateY(-5px); border-color: rgba(52, 211, 153, 0.45);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba(16, 185, 129, 0.15);
+    }
+    .screen-img-wrap {
+      position: relative; overflow: hidden; background: #0B1612; border-bottom: 1px solid var(--line);
+    }
+    .screen-img-wrap img {
+      width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; transition: transform .4s ease;
+    }
+    .screen-card:hover .screen-img-wrap img { transform: scale(1.025); }
+    .screen-info { padding: 22px 24px; flex-grow: 1; }
+    .screen-num {
+      font-size: 0.78rem; font-weight: 800; color: var(--green-2); letter-spacing: 0.12em;
+      text-transform: uppercase; display: block; margin-bottom: 6px;
+    }
+    .screen-info h3 { margin: 0 0 6px; font-size: 1.15rem; color: var(--text); font-weight: 700; }
+    .screen-info p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+    .banner-showcase {
+      margin-top: 40px; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--line); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .banner-showcase img { width: 100%; height: auto; display: block; }
+
     /* Showcase */
     .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     @media (max-width: 800px) { .showcase { grid-template-columns: 1fr; } }
@@ -463,8 +500,8 @@
           </div>
         </div>
         <div class="phones" id="phones" aria-label="Udhar Lo app screenshots">
-          <div class="phone back"><img src="img/screen-ledger.jpg" alt="Customer ledger screen showing credit given and payment received entries" width="430" height="760" loading="eager"></div>
-          <div class="phone front"><img src="img/screen-dashboard.jpg" alt="Udhar Lo dashboard showing You'll Get and You'll Give totals and customer list" width="430" height="760" loading="eager"></div>
+          <div class="phone back"><img src="img/2_smart_store_dashboard.png" alt="Udhar Lo Smart Store Dashboard showing You'll Get and You'll Give totals" width="430" height="760" loading="eager"></div>
+          <div class="phone front"><img src="img/1_customer_chat_ledger.png" alt="Udhar Lo Customer Chat Ledger with Diya, Liya and 1-tap WhatsApp reminder" width="430" height="760" loading="eager"></div>
         </div>
       </section>
 
@@ -620,23 +657,90 @@
         </div>
       </section>
 
-      <!-- Showcase Screens -->
-      <section aria-label="App Screenshots Showcase">
-        <div class="showcase">
-          <figure class="card shot reveal" style="margin:0">
-            <img src="img/dashboard.jpg" alt="Smart store dashboard with customer list and balances" width="500" height="889" loading="lazy">
-            <figcaption class="cap">
+      <!-- Showcase Screens (6 HD App Store Slides) -->
+      <section id="screens" aria-labelledby="screens-title">
+        <div class="center reveal">
+          <span class="kicker">Visual App Tour</span>
+          <h2 class="h2" id="screens-title">Built for Counter Speed: Simple, Fast & Clear</h2>
+          <p class="sub">Explore Udhar Lo's high-definition screens designed to eliminate calculation errors and accelerate dues collection.</p>
+        </div>
+
+        <div class="screens-grid">
+          <!-- Slide 1 -->
+          <article class="screen-card reveal">
+            <div class="screen-img-wrap">
+              <img src="img/udhar_lo_slide_1_hd.png" alt="Udhar Lo Slide 1: Customer Chat Ledger" width="600" height="1067" loading="lazy">
+            </div>
+            <div class="screen-info">
+              <span class="screen-num">Slide 01 • Khata Ledger</span>
+              <h3>Customer Chat Ledger</h3>
+              <p>Diya, Liya, and real-time running balance arranged in a transparent chat timeline. Zero confusion at month-end.</p>
+            </div>
+          </article>
+
+          <!-- Slide 2 -->
+          <article class="screen-card reveal">
+            <div class="screen-img-wrap">
+              <img src="img/udhar_lo_slide_2_hd.png" alt="Udhar Lo Slide 2: Smart Store Dashboard" width="600" height="1067" loading="lazy">
+            </div>
+            <div class="screen-info">
+              <span class="screen-num">Slide 02 • Counter Summary</span>
               <h3>Smart Counter Dashboard</h3>
-              <p>See "You'll Get" (Total Udhar) and "You'll Give" (Supplier dues) at a glance.</p>
-            </figcaption>
-          </figure>
-          <figure class="card shot reveal" style="margin:0">
-            <img src="img/ledger.jpg" alt="Customer ledger in chat style with WhatsApp and SMS share buttons" width="500" height="889" loading="lazy">
-            <figcaption class="cap">
-              <h3>Chat-Style Customer Ledger</h3>
-              <p>Every Diya and Liya entry in a clear timeline, with 1-tap WhatsApp reminder buttons.</p>
-            </figcaption>
-          </figure>
+              <p>See "You'll Get" (Customer Udhar) and "You'll Give" (Supplier Dues) at a glance with quick search.</p>
+            </div>
+          </article>
+
+          <!-- Slide 3 -->
+          <article class="screen-card reveal">
+            <div class="screen-img-wrap">
+              <img src="img/udhar_lo_slide_3_hd.png" alt="Udhar Lo Slide 3: 1-Tap WhatsApp Reminders & UPI QR" width="600" height="1067" loading="lazy">
+            </div>
+            <div class="screen-info">
+              <span class="screen-num">Slide 03 • Fast Collection</span>
+              <h3>WhatsApp Reminders & UPI QR</h3>
+              <p>Send polite reminders with PDF statements and your shop's UPI QR code so customers pay directly into your account.</p>
+            </div>
+          </article>
+
+          <!-- Slide 4 -->
+          <article class="screen-card reveal">
+            <div class="screen-img-wrap">
+              <img src="img/udhar_lo_slide_4_hd.png" alt="Udhar Lo Slide 4: GST & Non-GST Billing Invoices" width="600" height="1067" loading="lazy">
+            </div>
+            <div class="screen-info">
+              <span class="screen-num">Slide 04 • PDF Billing</span>
+              <h3>GST & Non-GST Invoicing</h3>
+              <p>Generate professional PDF invoices with item lists, rates, discounts and taxes. Share or print on thermal printers.</p>
+            </div>
+          </article>
+
+          <!-- Slide 5 -->
+          <article class="screen-card reveal">
+            <div class="screen-img-wrap">
+              <img src="img/udhar_lo_slide_5_hd.png" alt="Udhar Lo Slide 5: Stock & Inventory Management" width="600" height="1067" loading="lazy">
+            </div>
+            <div class="screen-info">
+              <span class="screen-num">Slide 05 • Stock Management</span>
+              <h3>Stock & Low-Stock Alerts</h3>
+              <p>Track quantities, purchase prices, and sales margins. Receive alerts before high-demand items run out.</p>
+            </div>
+          </article>
+
+          <!-- Slide 6 -->
+          <article class="screen-card reveal">
+            <div class="screen-img-wrap">
+              <img src="img/udhar_lo_slide_6_hd.png" alt="Udhar Lo Slide 6: Business Reports & Analytics" width="600" height="1067" loading="lazy">
+            </div>
+            <div class="screen-info">
+              <span class="screen-num">Slide 06 • Reports & Export</span>
+              <h3>Sales Reports & Excel Export</h3>
+              <p>Analyze daily sales and pending receivables with charts. Export clean PDF statements or Excel (CSV) files.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="banner-showcase reveal">
+          <img src="img/udhar_lo_showcase_banner.png" alt="Udhar Lo Comprehensive Features Showcase Banner" width="1200" height="675" loading="lazy">
         </div>
       </section>
 
