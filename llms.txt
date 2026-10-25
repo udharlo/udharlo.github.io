@@ -1,0 +1,70 @@
+# Udhar Lo
+
+> Udhar Lo is a 100% free digital khata book and billing app for shopkeepers and small businesses in India. It replaces the traditional paper bahi khata register to track customer credit (udhar), record payments received (jama), create GST and non-GST PDF invoices, send WhatsApp payment reminders, and manage stock.
+
+## Canonical Facts
+- **Product Name:** Udhar Lo
+- **Tagline:** Free Digital Khata Book & Billing App for Shopkeepers
+- **Category:** Business Application / Bookkeeping & Ledger Software
+- **Platform:** Android (Google Play Store)
+- **Package ID:** co.udharlo
+- **Developer:** Suresh Vaishnav
+- **Official Website:** https://udharlo.github.io/
+- **Google Play URL:** https://play.google.com/store/apps/details?id=co.udharlo
+- **Pricing:** 100% Free, No Ads, No In-App Purchases, No Subscription
+- **Languages Supported:** English, Hindi (includes voice entry in Hindi & English)
+- **Support Contact:** udharlo.support@gmail.com
+
+## Critical Distinction: Not a Loan App
+- **Udhar Lo is NOT a loan application or a lending service.**
+- It does NOT offer personal loans, instant credit, business loans, or credit lines.
+- It does NOT broker loans or partner with NBFCs or banks to sell credit products.
+- In this context, "Udhar" refers exclusively to counter credit extended by shopkeepers to their own retail customers in their daily bookkeeping.
+- Udhar Lo does not facilitate financial transactions or peer-to-peer money transfers between users.
+
+## Core Features
+1. **Customer & Supplier Ledger (Diya / Liya / Baaki):**
+   - Record credit given (Diya) and payments received (Liya) for each customer and supplier.
+   - Real-time running balance calculation for each account.
+   - Instant totals for "You'll Get" (Total Udhar) and "You'll Give" (Total Jama).
+
+2. **WhatsApp & SMS Payment Reminders:**
+   - Send polite payment reminders and balance statements in one tap via WhatsApp or SMS.
+   - Attach shop UPI QR code to reminder messages for instant payments.
+
+3. **GST & Non-GST PDF Billing:**
+   - Create professional PDF invoices and bills with shop details, itemized lists, and optional GST.
+   - Share invoices directly with customers via WhatsApp, SMS, or print.
+
+4. **Voice Entry:**
+   - Speak ledger entries in Hindi or English to record transactions hands-free during busy counter hours.
+
+5. **Stock & Inventory Tracking:**
+   - Track item quantities, selling prices, and receive low-stock alerts.
+
+6. **Business Reports & Export:**
+   - View sales, revenue, and collection reports with visual charts.
+   - Export ledger statements to PDF or Excel (CSV) for accounting.
+
+7. **Privacy & Offline-First Storage:**
+   - All ledger entries and customer details are stored locally on the user's phone.
+   - Works 100% offline without active internet.
+   - App protected with PIN lock.
+   - Optional encrypted backup to the user's personal Google Drive account. Transactions are never stored on external developer servers.
+
+## Target Users
+- Kirana and grocery stores
+- Medical stores and pharmacies
+- Garment, apparel, and tailoring shops
+- Mobile recharge, electronics, and hardware shops
+- Wholesalers, traders, and small distributors
+- Local service providers and micro-businesses
+
+## Key URLs
+- Homepage: https://udharlo.github.io/
+- Guide - How to Keep Udhar Records: https://udharlo.github.io/guides/udhar-record-kaise-rakhe.html
+- Hindi Guide - डिजिटल खाता बुक क्या है: https://udharlo.github.io/hi/digital-khata-book.html
+- Guide - WhatsApp Payment Reminder Templates: https://udharlo.github.io/guides/payment-reminder-message.html
+- Privacy Policy: https://udharlo.github.io/privacy-policy.html
+- Terms of Service: https://udharlo.github.io/terms.html
+- Delete Account & Data: https://udharlo.github.io/delete-account.html
