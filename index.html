@@ -261,12 +261,18 @@
     }
     .ic svg { width: 22px; height: 22px; }
 
-    /* Showcase */
-    .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    @media (max-width: 800px) { .showcase { grid-template-columns: 1fr; } }
-    .shot { padding: 0; }
-    .shot img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; }
-    .shot .cap { padding: 18px 22px; }
+    /* Showcase Grid */
+    .showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 900px) { .showcase-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } }
+    .shot { padding: 0; border-radius: var(--radius); overflow: hidden; }
+    .shot picture, .shot img { width: 100%; height: auto; display: block; aspect-ratio: 9 / 19.5; object-fit: cover; object-position: top; }
+    .shot .cap { padding: 20px 22px; }
+    .shot .cap h3 { margin: 0 0 6px; font-size: 1.1rem; }
+    .shot .cap p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.5; }
+    .badge-num {
+      font-size: .72rem; font-weight: 800; color: var(--green-2); letter-spacing: .12em;
+      text-transform: uppercase; display: block; margin-bottom: 6px;
+    }
 
     /* Steps */
     .steps { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); counter-reset: s; }
@@ -568,16 +574,48 @@
         </div>
       </section>
 
-      <!-- Showcase -->
-      <section aria-label="App screenshots">
-        <div class="showcase">
+      <!-- Showcase: 3 Core App Screens -->
+      <section id="screens" aria-labelledby="screens-title">
+        <div class="center reveal">
+          <span class="kicker">Simple by Design</span>
+          <h2 class="h2" id="screens-title">Built for the Counter, Not for an Office</h2>
+          <p class="sub">Clear balances, instant entries and one-tap reminders. Nothing extra.</p>
+        </div>
+        <div class="showcase-grid">
           <figure class="card shot reveal" style="margin:0">
-            <img src="img/dashboard.jpg" alt="Smart store dashboard with customer list and balances" width="500" height="889" loading="lazy">
-            <figcaption class="cap"><h3>Smart store dashboard</h3><p>All customers, stock and today's dues on one screen.</p></figcaption>
+            <picture>
+              <source srcset="img/screen-dashboard.webp" type="image/webp">
+              <img src="img/screen-dashboard.jpg" alt="Smart store counter dashboard screen" width="430" height="760" loading="lazy">
+            </picture>
+            <figcaption class="cap">
+              <span class="badge-num">Dashboard</span>
+              <h3>Smart Counter Summary</h3>
+              <p>See "You'll Get" and "You'll Give" totals and customer dues the moment you open the app.</p>
+            </figcaption>
           </figure>
+
           <figure class="card shot reveal" style="margin:0">
-            <img src="img/ledger.jpg" alt="Customer ledger in chat style with WhatsApp and SMS share buttons" width="500" height="889" loading="lazy">
-            <figcaption class="cap"><h3>Chat-style customer ledger</h3><p>Every entry for a customer in one timeline, with bills and share buttons.</p></figcaption>
+            <picture>
+              <source srcset="img/screen-ledger.webp" type="image/webp">
+              <img src="img/screen-ledger.jpg" alt="Customer Chat Ledger screen" width="430" height="760" loading="lazy">
+            </picture>
+            <figcaption class="cap">
+              <span class="badge-num">Customer Ledger</span>
+              <h3>Chat-Style Khata</h3>
+              <p>Every credit (Diya) and payment (Liya) in a transparent timeline with running balances.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="card shot reveal" style="margin:0">
+            <picture>
+              <source srcset="img/udhar_lo_slide_3.webp" type="image/webp">
+              <img src="img/udhar_lo_slide_3_hd.png" alt="WhatsApp payment reminder with UPI QR" width="430" height="760" loading="lazy">
+            </picture>
+            <figcaption class="cap">
+              <span class="badge-num">Collections</span>
+              <h3>WhatsApp & UPI Reminders</h3>
+              <p>Share payment reminders with your shop's UPI QR code so customers pay directly from home.</p>
+            </figcaption>
           </figure>
         </div>
       </section>
