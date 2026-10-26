@@ -219,15 +219,15 @@
     @media (max-width: 900px) { .trust { justify-content: center; } }
 
     /* Phones */
-    .phones { position: relative; height: 560px; perspective: 1400px; overflow: visible; }
-    @media (max-width: 900px) { .phones { height: 420px; max-width: 360px; margin: 0 auto; width: 100%; overflow: hidden; } }
+    .phones { position: relative; height: 580px; perspective: 1400px; overflow: visible; }
+    @media (max-width: 900px) { .phones { height: 460px; max-width: 360px; margin: 0 auto; width: 100%; overflow: visible; } }
     .phone {
       position: absolute; width: 250px; border-radius: 34px; padding: 8px; background: #0B1612;
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03) inset, 0 0 60px rgba(16,185,129,.15);
       transform-style: preserve-3d; transition: transform .25s ease-out;
     }
-    .phone img { width: 100%; height: auto; border-radius: 27px; aspect-ratio: 430 / 760; object-fit: cover; }
+    .phone img { width: 100%; height: auto; border-radius: 27px; aspect-ratio: 9 / 19.5; object-fit: cover; object-position: top; }
     .phone.front { left: 50%; top: 10px; transform: translateX(-30%) rotateY(-14deg) rotateX(6deg); z-index: 2; }
     .phone.back { left: 50%; top: 70px; transform: translateX(-95%) rotateY(-14deg) rotateX(6deg) scale(.88); opacity: .75; z-index: 1; }
     @media (max-width: 900px) { .phone { width: 190px; } }
@@ -497,11 +497,11 @@
           </div>
         </div>
         <div class="phones" id="phones" aria-label="Udhar Lo app screenshots">
-          <div class="phone back"><picture><source srcset="img/udhar_lo_slide_1.webp" type="image/webp"><img src="img/udhar_lo_slide_1_hd.png" alt="Customer ledger screen showing credit given and payment received entries" width="430" height="760" loading="eager"></picture></div>
+          <div class="phone back"><picture><source srcset="img/udhar_lo_slide_1.webp" type="image/webp"><img src="img/udhar_lo_slide_1_hd.png" alt="Customer ledger screen showing credit given and payment received entries" width="428" height="926" loading="eager"></picture></div>
           <div class="chip c1" aria-hidden="true"><span class="chip-ic up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span><span><b>Diya ₹500</b><small>Ramesh Kumar</small></span></div>
           <div class="chip c2" aria-hidden="true"><span class="chip-ic down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M17 7 7 17M16 17H7V8"/></svg></span><span><b>Liya ₹60</b><small>Payment received</small></span></div>
           <div class="chip c3" aria-hidden="true"><span class="chip-ic wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Reminder sent</b><small>on WhatsApp</small></span></div>
-          <div class="phone front"><picture><source srcset="img/udhar_lo_slide_2.webp" type="image/webp"><img src="img/udhar_lo_slide_2_hd.png" alt="Udhar Lo dashboard showing You'll Get and You'll Give totals and customer list" width="430" height="760" loading="eager" fetchpriority="high"></picture></div>
+          <div class="phone front"><picture><source srcset="img/udhar_lo_slide_2.webp" type="image/webp"><img src="img/udhar_lo_slide_2_hd.png" alt="Udhar Lo dashboard showing You'll Get and You'll Give totals and customer list" width="428" height="926" loading="eager" fetchpriority="high"></picture></div>
         </div>
       </section>
 
