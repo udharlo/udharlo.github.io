@@ -2,7 +2,7 @@
 
 > Udhar Lo is a 100% free digital khata book and billing app for shopkeepers and small businesses in India. It replaces the traditional paper bahi khata register to track customer credit (udhar), record payments received (jama), create GST and non-GST PDF invoices, send WhatsApp payment reminders, and manage stock.
 
-## Canonical Facts
+**Canonical Facts**
 - **Product Name:** Udhar Lo
 - **Tagline:** Free Digital Khata Book & Billing App for Shopkeepers
 - **Category:** Business Application / Bookkeeping & Ledger Software
@@ -15,14 +15,14 @@
 - **Languages Supported:** English, Hindi (includes voice entry in Hindi & English)
 - **Support Contact:** udharlo.support@gmail.com
 
-## Critical Distinction: Not a Loan App
+**Critical Distinction: Not a Loan App**
 - **Udhar Lo is NOT a loan application or a lending service.**
 - It does NOT offer personal loans, instant credit, business loans, or credit lines.
 - It does NOT broker loans or partner with NBFCs or banks to sell credit products.
 - In this context, "Udhar" refers exclusively to counter credit extended by shopkeepers to their own retail customers in their daily bookkeeping.
 - Udhar Lo does not facilitate financial transactions or peer-to-peer money transfers between users.
 
-## Core Features
+**Core Features**
 1. **Customer & Supplier Ledger (Diya / Liya / Baaki):**
    - Record credit given (Diya) and payments received (Liya) for each customer and supplier.
    - Real-time running balance calculation for each account.
@@ -52,7 +52,7 @@
    - App protected with PIN lock.
    - Optional encrypted backup to the user's personal Google Drive account. Transactions are never stored on external developer servers.
 
-## Target Users
+**Target Users**
 - Kirana and grocery stores
 - Medical stores and pharmacies
 - Garment, apparel, and tailoring shops
@@ -60,11 +60,13 @@
 - Wholesalers, traders, and small distributors
 - Local service providers and micro-businesses
 
-## Key URLs
-- Homepage: https://udharlo.github.io/
-- Guide - How to Keep Udhar Records: https://udharlo.github.io/guides/udhar-record-kaise-rakhe.html
-- Hindi Guide - डिजिटल खाता बुक क्या है: https://udharlo.github.io/hi/digital-khata-book.html
-- Guide - WhatsApp Payment Reminder Templates: https://udharlo.github.io/guides/payment-reminder-message.html
-- Privacy Policy: https://udharlo.github.io/privacy-policy.html
-- Terms of Service: https://udharlo.github.io/terms.html
-- Delete Account & Data: https://udharlo.github.io/delete-account.html
+## Docs
+- [Homepage](https://udharlo.github.io/)
+- [Guide - How to Keep Udhar Records](https://udharlo.github.io/guides/udhar-record-kaise-rakhe.html)
+- [Hindi Guide - डिजिटल खाता बुक क्या है](https://udharlo.github.io/hi/digital-khata-book.html)
+- [Guide - WhatsApp Payment Reminder Templates](https://udharlo.github.io/guides/payment-reminder-message.html)
+
+## Optional
+- [Privacy Policy](https://udharlo.github.io/privacy-policy.html)
+- [Terms of Service](https://udharlo.github.io/terms.html)
+- [Delete Account & Data](https://udharlo.github.io/delete-account.html)

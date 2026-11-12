@@ -240,13 +240,13 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0
   border-radius: var(--radius); padding: 18px 22px; margin: 24px 0;
   background: var(--primary-soft); border-left: 4px solid var(--primary);
 }
-.callout-box h4 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.05rem; }
+.callout-box h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.05rem; }
 .callout-box p { margin: 0; font-size: 0.95rem; }
 
 .callout-danger {
   background: rgba(239, 68, 68, 0.08); border-left: 4px solid #EF4444;
 }
-.callout-danger h4 { color: #DC2626; }
+.callout-danger h3 { color: #DC2626; }
 
 .cta-banner {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.05));
